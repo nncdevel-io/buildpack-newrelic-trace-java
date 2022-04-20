@@ -66,7 +66,7 @@ $ ./scripts/build-golang.sh
 buildpack のパッケージング(Docker イメージ化)
 
 ```bash
-$ ./scripts/package-image.sh
+$ ./scripts/package-buildpack-image.sh
 ```
 
 イメージの push
