@@ -1,0 +1,4 @@
+bin/main
+bin/build
+
+docker-compose.yml

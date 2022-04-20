@@ -1,0 +1,35 @@
+version: '2'
+services:
+  build-golang:
+    image: golang
+    environment:
+      GOOS: linux
+      GOARCH: amd64
+      https_proxy: http://user:password@proxy.tky.nri-net.com:8080
+      http_proxy: http://user:password@proxy.tky.nri-net.com:8080
+    command: ["scripts/build-golang.sh"]
+    working_dir: "/workspace"
+    volumes:
+      - ".:/workspace"
+  package-buildpack-image:
+    build:
+      context: ./docker
+      dockerfile: Dockerfile.pack-cli
+      args:
+        PACK_VERSION: v0.13.1
+        https_proxy: http://user:password@proxy.tky.nri-net.com:8080
+        http_proxy: http://user:password@proxy.tky.nri-net.com:8080
+    command: ["scripts/package-buildpack-image.sh"]
+    working_dir: "/workspace"
+    volumes:
+    - ".:/workspace"
+    - "/var/run/docker.sock:/var/run/docker.sock"
+networks:
+  default:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      - subnet: 10.0.3.0/24
+        gateway: 10.0.3.1
+    
