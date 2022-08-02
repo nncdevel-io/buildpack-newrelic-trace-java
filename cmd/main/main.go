@@ -3,14 +3,15 @@ package main
 import (
 	"os"
 
-	"github.com/nncdevel-io/paketo-newrelic-trace-java/newrelic"
+	"github.com/nncdevel-io/buildpack-newrelic-trace-java/newrelic"
 	"github.com/paketo-buildpacks/libpak"
 	"github.com/paketo-buildpacks/libpak/bard"
 )
 
 func main() {
+	logger := bard.NewLogger(os.Stdout)
 	libpak.Main(
-		datadog.Detect{},
-		datadog.Build{Logger: bard.NewLogger(os.Stdout)},
+		newrelic.Detect{Logger: logger},
+		newrelic.Build{Logger: logger},
 	)
 }
