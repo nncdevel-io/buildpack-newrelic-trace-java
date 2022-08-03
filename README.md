@@ -1,10 +1,10 @@
-# buildpack-newrelic-trace-java
+# paketo-newrelic-trace-java
 
 [New Relic Java Agent](https://docs.newrelic.com/jp/docs/apm/agents/java-agent/installation/install-java-agent/)の利用に必要な `newrelic-java-agent.jar` を挿入するビルドパックです。
 
 ## ゴール
 
-Datadog Java Agent では Jar ファイルが提供されますが、バイトコード変更を行う JavaAgent の Jar として提供されているため、java コマンドの`-jar` オプションではなく、`-javaagent`オプションに渡す必要があります。
+Newrelic Java Agent では Jar ファイルが提供されますが、バイトコード変更を行う JavaAgent の Jar として提供されているため、java コマンドの`-jar` オプションではなく、`-javaagent`オプションに渡す必要があります。
 
 本プロジェクトのアプリケーションは SpringBoot 2.3 からサポートされた CloudNativeBuildpacks を利用した OCI イメージビルドを利用しているため、このイメージビルド時に jar ファイルを挿入し、java コマンド起動オプションを設定する必要があります。
 
@@ -12,12 +12,8 @@ Datadog Java Agent では Jar ファイルが提供されますが、バイト�
 
 | 環境編集                     | 説明                                                                                                                   |
 | ---------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| `$BP_NEWRELIC_AGENT_VERSION` | 挿入する New Relic Java Agent Jar のバージョンを指定します。 <br> デフォルトでは `7.6.0`(22/02/09 現在) を利用します。 |
-
-## 課題
-
--   buildpack の detect フェーズが正しく実装できていない。
-    本来であれば jvm アプリのビルドである場合のみにこのビルドパックが有効になるような`bin/detect`を実装するべきだが、実現できていない。<br> `libcnb.BuildPlan` の実装に問題がありそうだが未解決。とりあえずは bin/detect を空のスクリプトにして必ず読み込まれるように。
+| `$BP_USE_NEWRELIC`           | New Relic Java Agenct Jarを挿入するスイッチです。 デフォルトでは `false` が設定され、利用されません。 |
+| `$BP_NEWRELIC_AGENT_VERSION` | 挿入する New Relic Java Agent Jar のバージョンを指定します。 <br> デフォルトでは `7.9.0`(22/08/02 現在) を利用します。 |
 
 ## ビルドに必要なもの
 
@@ -34,7 +30,7 @@ golang、pack CLI をローカルにインストールする場合は下記の 2
 
 まずは `docker-compose.yml.example` を `docker-compose.yml` としてコピーします。
 
-コピーしたファイルを開き、`http_proxy`、`https_proxy` の認証情報を各人のもので上書き、保存してください。
+プロキシ設定が必要な環境ではコピーしたファイルを開き、`http_proxy`、`https_proxy` の認証情報を各人のもので上書き、保存してください。
 
 golang のビルド
 

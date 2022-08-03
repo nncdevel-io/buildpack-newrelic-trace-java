@@ -1,6 +1,6 @@
 FROM centos:latest AS pack
 
-ARG PACK_VERSION=v0.13.1
+ARG PACK_VERSION=v0.26.0
 ARG http_proxy
 ARG https_proxy
 

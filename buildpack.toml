@@ -1,31 +1,49 @@
 # Indicates compatibility version with lifecycle
-api = "0.2"
+api = "0.7"
 
 # General metadata about the buildpack that is used be the lifecycle
 [buildpack]
   id = "nncdevel-io/paketo-newrelic-java-agent"
   name = "New Relic Java Agent APM"
-  version = "0.0.1"
+  version = "0.1.0"
 
 # The list of stacks that the buildpack itself is compatible with
 [[stacks]]
 id = "io.buildpacks.stacks.bionic"
 
 [[stacks]]
-id = "io.paketo.stacks.tiny"
+id = "io.buildpacks.stacks.jammy"
 
-[[stacks]]
-id = "org.cloudfoundry.stacks.cflinuxfs3"
 
 [[metadata.configurations]]
 name        = "BP_NEWRELIC_AGENT_VERSION"
 description = "the New Relic-java-agent version"
-default     = "7.6.0"
+default     = "7.9.0"
+build       = true
+
+[[metadata.configurations]]
+name        = "BP_USE_NEWRELIC"
+description = "Enable newrelic agent"
+default     = "false"
 build       = true
 
 [[metadata.dependencies]]
   id      = "newrelic-java-agent"
   name    = "newrelic-java-agent"
+  version = "7.9.0"
+  cpes    = ["cpe:2.3:a:newrelic-agent:newrelic-agent:7.9.0:*:*:*:*:*:*:*"]
+  purl    = "pkg:generic/newrelic-agent@7.9.0?arch=amd64"
+  uri     = "https://repo1.maven.org/maven2/com/newrelic/agent/java/newrelic-agent/7.9.0/newrelic-agent-7.9.0.jar"
+  sha256  = "0bfa5a55533fb13b2eda612f9c392c3b8237b766b5379d5256f0c5f657915e7f"
+  stacks  = [ "io.buildpacks.stacks.bionic", "io.paketo.stacks.tiny", "org.cloudfoundry.stacks.cflinuxfs3" ]
+
+
+[[metadata.dependencies]]
+  id      = "newrelic-java-agent"
+  name    = "newrelic-java-agent"
   version = "7.6.0"
-  uri = "https://repo1.maven.org/maven2/com/newrelic/agent/java/newrelic-agent/7.6.0/newrelic-agent-7.6.0.jar"
+  cpes    = ["cpe:2.3:a:newrelic-agent:newrelic-agent:7.6.0:*:*:*:*:*:*:*"]
+  purl    = "pkg:generic/newrelic-agent@7.6.0?arch=amd64"
+  uri     = "https://repo1.maven.org/maven2/com/newrelic/agent/java/newrelic-agent/7.6.0/newrelic-agent-7.6.0.jar"
+  sha256  = "44e4a78b8b5526e3b7fbe5e46fee50a0decad3355aa007117a056e30bdcb6a8a"
   stacks  = [ "io.buildpacks.stacks.bionic", "io.paketo.stacks.tiny", "org.cloudfoundry.stacks.cflinuxfs3" ]
