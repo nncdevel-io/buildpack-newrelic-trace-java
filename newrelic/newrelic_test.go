@@ -1,7 +1,7 @@
 package newrelic
 
 import (
-	"io/ioutil"
+	"os"
 	"testing"
 
 	"github.com/buildpacks/libcnb"
@@ -49,7 +49,7 @@ func testNewrelic(t *testing.T, context spec.G, it spec.S) {
 
 	it("dependencyLayerFunc", func() {
 
-		depFile, _ := ioutil.TempFile("", "dependency")
+		depFile, _ := os.CreateTemp("", "dependency")
 
 		dep := libpak.BuildpackDependency{
 			Version: "11.0.0",
