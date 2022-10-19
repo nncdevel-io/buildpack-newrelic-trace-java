@@ -34,9 +34,14 @@ jobs:
     needs: setup
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: test
-        run: go test ./... -v
+        run: go test -race -coverprofile=coverage.xml -covermode=atomic ./... -v
+      - name: upload coverage
+        uses: codecov/codecov-action@v1
+        with:
+          files: ./coverage.xml
+          verbose: true
 
   lint:
     needs: setup
