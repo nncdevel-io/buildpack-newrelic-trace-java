@@ -5,14 +5,17 @@ api = "0.7"
 [buildpack]
   id = "nncdevel-io/paketo-newrelic-java-agent"
   name = "New Relic Java Agent APM"
-  version = "0.1.0"
+  version = "0.2.0-SNAPSHOT"
 
 # The list of stacks that the buildpack itself is compatible with
 [[stacks]]
 id = "io.buildpacks.stacks.bionic"
 
 [[stacks]]
-id = "io.buildpacks.stacks.jammy"
+id = "io.paketo.stacks.tiny"
+
+[[stacks]]
+id = "*"
 
 
 [[metadata.configurations]]
@@ -35,7 +38,7 @@ build       = true
   purl    = "pkg:generic/newrelic-agent@7.11.1?arch=amd64"
   uri     = "https://repo1.maven.org/maven2/com/newrelic/agent/java/newrelic-agent/7.11.1/newrelic-agent-7.11.1.jar"
   sha256  = "a6e418ce099b73243a648db2c0f75e31bc4f1175c1f5299c6fb0533826272176"
-  stacks  = [ "io.buildpacks.stacks.bionic", "io.paketo.stacks.tiny", "org.cloudfoundry.stacks.cflinuxfs3" ]
+  stacks  = ["io.buildpacks.stacks.bionic", "io.paketo.stacks.tiny", "*"]
 
 
 [[metadata.dependencies]]
@@ -46,7 +49,7 @@ build       = true
   purl    = "pkg:generic/newrelic-agent@7.9.0?arch=amd64"
   uri     = "https://repo1.maven.org/maven2/com/newrelic/agent/java/newrelic-agent/7.9.0/newrelic-agent-7.9.0.jar"
   sha256  = "0bfa5a55533fb13b2eda612f9c392c3b8237b766b5379d5256f0c5f657915e7f"
-  stacks  = [ "io.buildpacks.stacks.bionic", "io.paketo.stacks.tiny", "org.cloudfoundry.stacks.cflinuxfs3" ]
+  stacks  = ["io.buildpacks.stacks.bionic", "io.paketo.stacks.tiny", "*"]
 
 
 [[metadata.dependencies]]
@@ -57,4 +60,4 @@ build       = true
   purl    = "pkg:generic/newrelic-agent@7.6.0?arch=amd64"
   uri     = "https://repo1.maven.org/maven2/com/newrelic/agent/java/newrelic-agent/7.6.0/newrelic-agent-7.6.0.jar"
   sha256  = "44e4a78b8b5526e3b7fbe5e46fee50a0decad3355aa007117a056e30bdcb6a8a"
-  stacks  = [ "io.buildpacks.stacks.bionic", "io.paketo.stacks.tiny", "org.cloudfoundry.stacks.cflinuxfs3" ]
+  stacks  = ["io.buildpacks.stacks.bionic", "io.paketo.stacks.tiny", "*"]
