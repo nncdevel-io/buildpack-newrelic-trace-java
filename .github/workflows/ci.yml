@@ -138,14 +138,14 @@ jobs:
             MAJOR_VERSION="$(echo "${VERSION}" | awk -F '.' '{print $1 }')"
             MINOR_VERSION="$(echo "${VERSION}" | awk -F '.' '{print $1 "." $2 }')"
 
-            echo "version_major=${MAJOR_VERSION}" >> "${GITHUB_ENV}"
-            echo "version_minor=${MINOR_VERSION}" >> "${GITHUB_ENV}"
+            echo "VERSION_MAJOR=${MAJOR_VERSION}" >> "${GITHUB_ENV}"
+            echo "VERSION_MINOR=${MINOR_VERSION}" >> "${GITHUB_ENV}"
           elif [[ ${GITHUB_REF} =~ refs/heads/(.+) ]]; then
             VERSION=${BASH_REMATCH[1]}
           else
             VERSION=$(git rev-parse --short HEAD)
           fi
-          echo "version=${VERSION}" >> "${GITHUB_ENV}"
+          echo "VERSION=${VERSION}" >> "${GITHUB_ENV}"
           echo "Selected ${VERSION} from
             * ref: ${GITHUB_REF}
             * sha: ${GITHUB_SHA}
@@ -169,6 +169,3 @@ jobs:
           crane tag "${PACKAGE}:${VERSION}" latest
         env:
           PACKAGE: "nncdevel/buildpack-newrelic-java-agent"
-          VERSION: ${{ steps.version.outputs.version }}
-          VERSION_MAJOR: ${{ steps.version.outputs.version_major }}
-          VERSION_MINOR: ${{ steps.version.outputs.version_minor }}
