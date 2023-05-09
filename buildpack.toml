@@ -5,7 +5,7 @@ api = "0.7"
 [buildpack]
   id = "nncdevel-io/paketo-newrelic-java-agent"
   name = "New Relic Java Agent APM"
-  version = "0.1.0"
+  version = "0.2.0-SNAPSHOT"
 
 # The list of stacks that the buildpack itself is compatible with
 [[stacks]]
@@ -57,4 +57,4 @@ build       = true
   purl    = "pkg:generic/newrelic-agent@7.6.0?arch=amd64"
   uri     = "https://repo1.maven.org/maven2/com/newrelic/agent/java/newrelic-agent/7.6.0/newrelic-agent-7.6.0.jar"
   sha256  = "44e4a78b8b5526e3b7fbe5e46fee50a0decad3355aa007117a056e30bdcb6a8a"
-  stacks  = [ "io.buildpacks.stacks.bionic", "io.paketo.stacks.tiny", "org.cloudfoundry.stacks.cflinuxfs3" ]
+  stacks  = [ "io.buildpacks.stacks.bionic", "io.buildpacks.stacks.jammy.tiny", "io.paketo.stacks.tiny", "org.cloudfoundry.stacks.cflinuxfs3" ]
