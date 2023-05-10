@@ -35,6 +35,16 @@ jobs:
         if: steps.buildpack-toml-changed.outputs.any_changed == 'true'
         run: go run verify.go
 
+  lint:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: golangci-lint
+        uses: golangci/golangci-lint-action@v2
+        with:
+          version: v1.52.2
+
   build:
     needs: setup
     runs-on: ubuntu-latest
@@ -60,19 +70,9 @@ jobs:
           files: ./coverage.xml
           verbose: true
 
-  lint:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: golangci-lint
-        uses: golangci/golangci-lint-action@v2
-        with:
-          version: v1.52.2
-
   create-package:
+    needs: [lint, test]
     if: ${{ (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop' || startsWith(github.ref, 'refs/tags/') ) }}
-    needs: [build]
     runs-on: ubuntu-latest
     steps:
       - name: Docker login gcr.io
