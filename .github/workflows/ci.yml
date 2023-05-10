@@ -71,6 +71,7 @@ jobs:
           version: v1.52.2
 
   create-package:
+    if: ${{ (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop' || startsWith(github.ref, 'refs/tags/') ) }}
     needs: [build]
     runs-on: ubuntu-latest
     steps:
