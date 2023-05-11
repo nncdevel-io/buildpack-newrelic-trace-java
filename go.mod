@@ -4,14 +4,14 @@ go 1.18
 
 require (
 	github.com/BurntSushi/toml v1.2.1
-	github.com/buildpacks/libcnb v1.27.0
+	github.com/buildpacks/libcnb v1.28.0
 	github.com/onsi/gomega v1.27.6
 	github.com/paketo-buildpacks/libpak v1.63.0
 	github.com/sclevine/spec v1.4.0
 )
 
 require (
-	github.com/Masterminds/semver/v3 v3.1.1 // indirect
+	github.com/Masterminds/semver/v3 v3.2.1 // indirect
 	github.com/creack/pty v1.1.18 // indirect
 	github.com/google/go-cmp v0.5.9 // indirect
 	github.com/heroku/color v0.0.6 // indirect
