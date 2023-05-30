@@ -31,6 +31,8 @@ func testDetect(t *testing.T, context spec.G, it spec.S) {
 		Expect(err).NotTo(HaveOccurred())
 		Expect(res).NotTo(BeNil())
 
+		Expect(res.Pass).To(Equal(false))
+
 		Expect(res.Plans).To(Equal([]libcnb.BuildPlan{
 			{
 				Provides: []libcnb.BuildPlanProvide{},
@@ -50,6 +52,8 @@ func testDetect(t *testing.T, context spec.G, it spec.S) {
 		Expect(err).NotTo(HaveOccurred())
 		Expect(res).NotTo(BeNil())
 
+		Expect(res.Pass).To(Equal(false))
+
 		Expect(res.Plans).To(Equal([]libcnb.BuildPlan{
 			{
 				Provides: []libcnb.BuildPlanProvide{},
@@ -68,6 +72,8 @@ func testDetect(t *testing.T, context spec.G, it spec.S) {
 		res, err := detect.Detect(ctx)
 		Expect(err).NotTo(HaveOccurred())
 		Expect(res).NotTo(BeNil())
+
+		Expect(res.Pass).To(Equal(true))
 
 		Expect(res.Plans).To(Equal([]libcnb.BuildPlan{
 			{
