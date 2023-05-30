@@ -3,9 +3,10 @@ api = "0.7"
 
 # General metadata about the buildpack that is used be the lifecycle
 [buildpack]
-  id = "nncdevel-io/paketo-newrelic-java-agent"
+  id = "nncdevel-io/buildpack-newrelic-trace-java"
   name = "New Relic Java Agent APM"
   version = "0.2.0-SNAPSHOT"
+  sbom-formats = ["application/vnd.syft+json", "application/vnd.cyclonedx+json"]
 
 # The list of stacks that the buildpack itself is compatible with
 [[stacks]]

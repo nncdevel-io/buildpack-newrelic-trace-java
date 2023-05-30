@@ -1,0 +1,28 @@
+// cSpell Settings
+{
+  // Version of the setting file.  Always 0.1
+  "version": "0.2",
+  // language - current active spelling language
+  "language": "en",
+  // words - list of words to be always considered correct
+  // sorted alphabetically
+  "words": [
+    "buildpack",
+    "buildpacks",
+    "paketo",
+    "cpes",
+    "newrelic",
+    "nncdevel"
+  ],
+  // flagWords - list of words to be always considered incorrect
+  // This is useful for offensive words and common spelling errors.
+  // For example "hte" should be "the"
+  "flagWords": [
+    "hte",
+    "flg"
+  ],
+  "ignorePaths": [
+    "node_modules",
+    "cspell.json"
+  ]
+}

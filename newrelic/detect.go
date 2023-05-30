@@ -26,6 +26,7 @@ func (d Detect) Detect(context libcnb.DetectContext) (libcnb.DetectResult, error
 		d.Logger.Debugf("Newrelic Agent enabled.")
 		return libcnb.DetectResult{
 			Plans: []libcnb.BuildPlan{
+				Pass: true,
 				{
 					Provides: []libcnb.BuildPlanProvide{
 						{Name: "newrelic-java-agent"},
