@@ -5,7 +5,7 @@ go 1.18
 require (
 	github.com/BurntSushi/toml v1.3.2
 	github.com/buildpacks/libcnb v1.30.1
-	github.com/onsi/gomega v1.29.0
+	github.com/onsi/gomega v1.30.0
 	github.com/paketo-buildpacks/libpak v1.67.2
 	github.com/sclevine/spec v1.4.0
 )
