@@ -1,6 +1,6 @@
 module github.com/nncdevel-io/buildpack-newrelic-trace-java
 
-go 1.18
+go 1.23.4
 
 require (
 	github.com/BurntSushi/toml v1.4.0
