@@ -3,7 +3,7 @@ module github.com/nncdevel-io/buildpack-newrelic-trace-java
 go 1.23.4
 
 require (
-	github.com/BurntSushi/toml v1.5.0
+	github.com/BurntSushi/toml v1.6.0
 	github.com/buildpacks/libcnb v1.30.4
 	github.com/onsi/gomega v1.37.0
 	github.com/paketo-buildpacks/libpak v1.73.0
